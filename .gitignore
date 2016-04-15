@@ -2,5 +2,5 @@ _site/
 .sass-cache/
 .jekyll-metadata
 
-# Mac OS X
+# OS Specific Ignores
 .DS_Store
