@@ -1,1 +1,1 @@
-# Interactive Analytics
+# Interactive Analytics Library
