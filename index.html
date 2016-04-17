@@ -1,6 +1,13 @@
 <!doctype html>
 <html>
   <head>
+    <!--
+    Interactive Analytics Library - An interaction based data modeling JavaScript
+    library. This project is maintained by the Visual Analytics Lab at Georgia Tech.
+    Authors: Bhargav Rajendra, Emily Wall and Arjun Srinivasan
+
+    This project is hosted on GitHub Pages and styled using the Ordered List (https://github.com/orderedlist) theme.
+    -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Interactive Analytics Library</title>
@@ -8,9 +15,6 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
   <body>
     <div class="wrapper">
@@ -47,174 +51,128 @@
         For example, when a user hovers or clicks on glyphs in a scatterplot representing data items, the system may display a tooltip or a detailed view. After the appropriate response is triggered, the data representing that interaction is discarded.  Given the importance of user interaction, how do we <i>elevate user interaction in visual analytic systems to a form of data, and enable systems to compute on this data gathered from the user?</i>
         </p>
 
-        <!-- <p>Roses are red<br> -->
-        <!-- Violets are blue</p> -->
+        <h2>The Basics</h2>
 
-        <!-- <p>The next paragraph has the same phrases, but now they are separated by two spaces and a newline character:</p> -->
+        <p>To use IAL in your application, you'll need to include the script in your code. Copy the snippet below, or download a copy from our repository.</p>
 
-        <!-- <p>Roses are red<br><br> -->
-        <!-- Violets are blue</p> -->
-
-        <!-- <p>Oh, and one thing I cannot stand is the mangling of words with multiple underscores in them like perform_complicated_task or do_this_and_do_that_and_another_thing.</p> -->
-        <!-- <h2>A bit of the GitHub spice</h2> -->
-
-        <!-- <p>In addition to the changes in the previous section, certain references are auto-linked:</p> -->
-
-        <!-- <ul>
-          <li>SHA: be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2</li>
-          <li>User@SHA ref: <a href="https://github.com/mojombo/product/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2" class="commit-link">mojombo@<tt>be6a8cc</tt></a></li>
-          <li>User/Project@SHA: <a href="https://github.com/mojombo/god/commit/be6a8cc1c1ecfe9489fb51e4869af15a13fc2cd2" class="commit-link">mojombo/god@<tt>be6a8cc</tt></a></li>
-          <li>#Num: <a href="https://github.com/github/product/issues/1" class="issue-link" title="Baseline: What is up in the air right now?">#1</a></li>
-          <li>User/#Num: mojombo#1</li>
-          <li>User/Project#Num: <a href="https://github.com/mojombo/god/issues/1" class="issue-link" title="The server is not available (or you do not have permissions to access it)">mojombo/god#1</a></li>
-        </ul> -->
-
-        <!-- <p>These are dangerous goodies though, and we need to make sure email addresses don't get mangled:</p> -->
-
-        <!-- <p>My email addy is <a href="mailto:tom@github.com">tom@github.com</a>.</p> -->
-
-        <!-- <h2>Math is hard, let's go shopping</h2> -->
-
-        <!-- <p>In first grade I learned that 5 &gt; 3 and 2 &lt; 7. Maybe some arrows. 1 -&gt; 2 -&gt; 3. 9 &lt;- 8 &lt;- 7.</p> -->
-
-        <!-- <p>Triangles man! a^2 + b^2 = c^2</p> -->
-
-        <!-- <h2>We all like making lists</h2> -->
-
-        <!-- <p>The above header should be an H2 tag. Now, for a list of fruits:</p> -->
-
-        <!-- <ul> -->
-          <!-- <li>Red Apples</li>
-          <li>Purple Grapes</li>
-          <li>Green Kiwifruits</li> -->
-        <!-- </ul> -->
-
-        <!-- <p>Let's get crazy:</p> -->
-
-        <!-- <ol>
-          <li>
-            <p>This is a list item with two paragraphs. Lorem ipsum dolor<br>
-            sit amet, consectetuer adipiscing elit. Aliquam hendrerit<br>
-            mi posuere lectus.</p>
-
-            <p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet<br>
-            vitae, risus. Donec sit amet nisl. Aliquam semper ipsum<br>
-            sit amet velit.</p>
-          </li>
-          <li><p>Suspendisse id sem consectetuer libero luctus adipiscing.</p></li>
-        </ol> -->
-
-        <!-- <p>What about some code <strong>in</strong> a list? That's insane, right?</p> -->
-
-        <!-- <ol>
-          <li>
-            <p>In Ruby you can map like this:</p>
-
-            <pre><code>['a', 'b'].map { |x| x.uppercase }</code></pre>
-          </li>
-          <li>
-            <p>In Rails, you can do a shortcut:</p>
-
-            <pre><code>['a', 'b'].map(&amp;:uppercase)</code></pre>
-          </li>
-        </ol> -->
-
-        <!-- <p>Some people seem to like definition lists</p>
-
-        <dl>
-          <dt>Lower cost</dt>
-          <dd>The new version of this product costs significantly less than the previous one!</dd>
-          <dt>Easier to use</dt>
-          <dd>We've changed the product so that it's much easier to use!</dd>
-        </dl>
-
-        <h2>I am a robot</h2>
-
-        <p>Maybe you want to print <code>robot</code> to the console 1000 times. Why not?</p>
-
-        <pre><code>def robot_invasion
-  puts("robot " * 1000)
-end
-</code></pre>
-
-        <p>You see, that was formatted as code because it's been indented by four spaces.</p>
-
-        <p>How about we throw some angle braces and ampersands in there?</p>
-
-        <pre><code>&lt;div class="footer"&gt;
-    &amp;copy; 2004 Foo Corporation
-&lt;/div&gt;
-</code></pre>
-
-        <h2>Set in stone</h2>
-
-        <p>Preformatted blocks are useful for ASCII art:</p>
-
-        <pre>             ,-.
-    ,     ,-.   ,-.
-   / \   (   )-(   )
-   \ |  ,.&gt;-(   )-&lt;
-    \|,' (   )-(   )
-     Y ___`-'   `-'
-     |/__/   `-'
-     |
-     |
-     |    -hrr-
-  ___|_____________
+<pre><code><span><<span>script src="https://raw.githubusercontent.com/gtvalab/Interactive-Analytics-Library/master/src/ial.js" charset="utf-8"></span><<span>script</span>></span></code>
 </pre>
 
-        <h2>Playing the blame game</h2>
+        <p>You might ask, <i>Why would I use IAL?</i> It's important to understand what IAL is and what it isn't. IAL is not a monolithic library that tries to visualize data, or replace analytical libraries. Mike Bostock's D3.js is a very powerful resource for binding data to visual elements on the DOM, and IAL is not meant to replace that. Instead, we build on top of that idea and extend it to interactions. IAL primarily provides the following.
+          <ol>
+            <li>Binding user interest to the visual elements of the webpage's DOM</li>
+            <li>Helper analytic methods that work directly on user interest</li>
+            <li>Easy logging capabilities to save the state of an interaction for later use</li>
+            <li>A very familiar syntax that works with common libraries like D3.js and jQuery</li>
+          </ol>
+          IAL's sytanx allows developers to combine multiple data driven methods, and add interaction analytics wherever required.
+        </p>
+        <h2>Initializing IAL</h2>
+        <p>
+        Initializing IAL is a simple one-step constructor call.
+        </p>
+        <pre><code>ial.init(data);</code></pre>
+        <p>
+        Data can provided to IAL in many ways. It can be as simple as passing a JSON object, or can be read from a CSV or JSON file directly using other utility methods.
+        </p>
+        <pre><code>
+var data = [
+  {"AWD":"1","City MPG":"17","Cyl":"6","Dealer Cost":"33337"},
+  {"AWD":"0","City MPG":"18","Cyl":"6","Dealer Cost":"39014"},
+  {"AWD":"0","City MPG":"18","Cyl":"6","Dealer Cost":"41100"}
+];
+</code>
+</pre>
+        <h2>Interaction Weight Vectors</h2>
+        <p>
+        IAL's core is based on the interaction weight concept. User interest is modeled and approxmited in IAL, using two weight vectors.
+        <ol>
+          <li>An attribute weight vector</li>
+          <li>An item weight vector</li>
+        </ol>
+        Combining the two vectors, IAL generates an item score that signifies how important a data point is. On initialization, IAL generates default attribute weight and item weights as identity vectors, and also generates the corresponding item scores. These values are bound to the data directly in the DOM as an ial object.
+        </p>
+        <pre><code>ial: {
+  "id": 0,
+  "itemScore": 4.1389,
+  "weight": 1
+}</code></pre>
 
-        <p>If you need to blame someone, the best way to do so is by quoting them:</p>
+        <h2>Modifying Weight Vectors</h2>
 
-        <blockquote>
-        <p>I, at any rate, am convinced that He does not throw dice.</p>
-        </blockquote>
+        <p>
+        The power to update and modify weight vectors based on interactions is given completely to the developer. We realize that each Visual Analytic toolkit has different goals, and the behavior of the weight vectors must be set according. For fine grained control of the weight vectors, we provide the following <i>getter</i> and <i>setter</i> methods.
+        </p>
 
-        <p>Or perhaps someone a little less eloquent:</p>
+        <ul>
+        <li>
+          <p>
+            <h4>Attribute Weights, based on Similarity</h4>
+            <p>Finding similar or dissimilar points is a very commonly required task in visual analytics. IAL provides easy access to updating attributes, based on how similar or dissimilar points.</p>
+          <pre><code>ial.generateAttributeWeightVectorUsingSimilarity(<i>[points]</i>);</code></pre>
+          <p>This method allows developers to modify the attribute weight vector directly, based on the similarity of a set of points. The method does not return any values, as it directly modifies the attribure weight vector. By default, the method operates on all points in the data set. This behavior can be modified by optionally passing an array of data objects that you want the method to work on.</p>
 
-        <blockquote>
-        <p>I wish you'd have given me this written question ahead of time so I<br>
-        could plan for it... I'm sure something will pop into my head here in<br>
-        the midst of this press conference, with all the pressure of trying to<br>
-        come up with answer, but it hadn't yet...</p>
+          <p>The other side of the same coin, is generating attribute weights based on how dissimilar a set of points are. IAL allows you to pass an array of points, and can generate the attribute weight vector based on the variance of each attribute.
+          </p>
+          <pre><code>ial.generateAttributeWeightVectorUsingDifferences([points]);</code></pre>
+          <p>IAL can also generate dissimilarity scores between two user-defined clusters of points. To do so, an additional array of points can be passed, and IAL can determine the attribute weight vector based on the difference between <i>set 1</i> and <i>set 2</i>.
+          </p>
+          <pre><code>ial.generateAttributeWeightVectorUsingDifferences([set1],
+                                                  [set2]);</code></pre>
+          <p>The dissimilarity between the two sets is once again determined the variance of each attribute of the data points.
+        </li>
+        <li>
+          <p>
+            <h4>Accessing Item Weights</h4>
+            <p>Item weights can be directly accessed and added to any event handler. We provide the following methods to do so.
+            </p>
+            <pre><code>ial.getItemWeight(ial.id);
+ial.setItemWeight(ial.id, newWeight);
+ial.incrementItemWeight(ial.id, <i>incrementBy</i>);
+</code></pre>
+            <p>To access the item weights, these methods require the item identifier. This identifier is attached to each data item on initialization.</p>
+          </p>
+        </li>
+        <li>
+          <p>
+            <h4>Accessing Attribute Weights</h4>
+            <p>Similarly, attribute weights can be directly accessed and added to any event handler. We provide the following methods to do so.
+            </p>
+            <pre><code>ial.getAttributeWeight(attributeName);
+ial.setAttributeWeight(attributeName, newWeight);
+ial.incrementAttributeWeight(attributeName, <i>incrementBy</i>);
+</code></pre>
+            <p>To access the attribute weights, these methods require the attribute identifier. This identifier is defined by the dataset used; key names from the data's JSON object are used to uniquely identify each attribute.</p>
+          </p>
+        </li>
+        </ul>
 
-        <p>I don't want to sound like<br>
-        I have made no mistakes. I'm confident I have. I just haven't - you<br>
-        just put me under the spot here, and maybe I'm not as quick on my feet<br>
-        as I should be in coming up with one.</p>
-        </blockquote>
-
-        <h2>Table for two</h2>
-
+        <!--
+        <h2>Helper Analytic Methods</h2>
         <table>
-          <tbody>
+        <tbody>
         <tr>
-            <th>ID</th>
+        <th>ID</th>
         <th>Name</th>
         <th>Rank</th>
-          </tr>
-          <tr>
-            <td>1</td>
+        </tr>
+        <tr>
+        <td>1</td>
         <td>Tom Preston-Werner</td>
         <td>Awesome</td>
-          </tr>
-          <tr>
-            <td>2</td>
+        </tr>
+        <tr>
+        <td>2</td>
         <td>Albert Einstein</td>
         <td>Nearly as awesome</td>
-          </tr>
+        </tr>
         </tbody>
-        </table> -->
+        </table>
+        -->
 
-        <!-- <h2>Crazy linking action</h2>
-
-        <p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from<br>
-        <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p> -->
       </section>
       <footer>
         <p>This project is maintained by<br/><a href="http://vis.gatech.edu">The Visual Analytics Lab at Georgia Tech</a></p>
-<!--         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p> -->
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>

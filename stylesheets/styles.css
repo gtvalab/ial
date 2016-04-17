@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,500,500italic,700,700italic);
 body {
   background-color: #fff;
-  padding:50px;
+  padding:40px;
   font: 14px/1.5 "Roboto" "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#727272;
   font-weight:300;
@@ -54,7 +54,7 @@ a:hover small {
 }
 
 .wrapper {
-  width:860px;
+  width:900px;
   margin:0 auto;
 }
 
@@ -170,7 +170,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:510px;
   float:right;
   padding-bottom:50px;
 }
