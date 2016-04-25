@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+  <head>
+    <!--
+    Interactive Analytics Library - An interaction based data modeling JavaScript
+    library. This project is maintained by the Visual Analytics Lab at Georgia Tech.
+    Authors: Bhargav Rajendra, Emily Wall and Arjun Srinivasan
+
+    This project is hosted on GitHub Pages and styled using the Ordered List (https://github.com/orderedlist) theme.
+    -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Interactive Analytics Library</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Interactive Analytics Library</h1>
+        <p>An interaction based data modeling JavaScript library</p>
+        <p class="view"><a href="https://github.com/gtvalab/Interactive-Analytics-Library">View the Project on GitHub<small>gtvalab/Interactive-Analytics-Library</small></a></p>
+        <ul>
+          <li>
+            <a href="https://github.com/gtvalab/Interactive-Analytics-Library/zipball/master">
+              Download<strong style="line-height: 130%;">ZIP File</strong>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/gtvalab/Interactive-Analytics-Library/tarball/master">
+              Download<strong style="line-height: 130%;">TAR Ball</strong>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/gtvalab/Interactive-Analytics-Library">
+              Fork On <strong style="line-height: 130%;">GitHub</strong>
+            </a>
+          </li>
+        </ul>
+      </header>
+      <section>
+        <h2>Helping Model User Interest from User Interaction</h2>
+
+        <!-- <p><em>View the <a href="http://github.github.com/github-flavored-markdown/sample_content.html">source of this content</a>.</em></p> -->
+        <p class="documentation">
+        In many visualizations, user interaction is represented as an ephemeral action taken by a user that moves the system from onestate to another. After this transition is completed, the user interactions are sometimes logged, but often discarded.
+        </p>
+        <p class="documentation">
+        For example, when a user hovers or clicks on glyphs in a scatterplot representing data items, the system may display a tooltip or a detailed view. After the appropriate response is triggered, the data representing that interaction is discarded.  Given the importance of user interaction, how do we <i>elevate user interaction in visual analytic systems to a form of data, and enable systems to compute on this data gathered from the user?</i>
+        </p>
+
+        <h2>The Basics</h2>
+
+        <p>To use IAL in your application, you'll need to include the script in your code. Copy the snippet below, or download a copy from our repository.</p>
+
+<pre><code><span><<span>script src="https://raw.githubusercontent.com/gtvalab/Interactive-Analytics-Library/master/src/ial.js" charset="utf-8"></span><<span>script</span>></span></code>
+</pre>
+
+        <p>You might ask, <i>Why would I use IAL?</i> It's important to understand what IAL is and what it isn't. IAL is not a monolithic library that tries to visualize data, or replace analytical libraries. Mike Bostock's D3.js is a very powerful resource for binding data to visual elements on the DOM, and IAL is not meant to replace that. Instead, we build on top of that idea and extend it to interactions. IAL primarily provides the following.
+          <ol>
+            <li>Binding user interest to the visual elements of the webpage's DOM</li>
+            <li>Helper analytic methods that work directly on user interest</li>
+            <li>Easy logging capabilities to save the state of an interaction for later use</li>
+            <li>A very familiar syntax that works with common libraries like D3.js and jQuery</li>
+          </ol>
+          IAL's syntax allows developers to combine multiple data driven methods, and add interaction analytics wherever required.
+        </p>
+        <h2>Initializing IAL</h2>
+        <p>
+        Initializing IAL is a simple one-step constructor call.
+        </p>
+        <pre><code>ial.init(data);</code></pre>
+        <p>
+        Data can provided to IAL in many ways. It can be as simple as passing a JSON object, or can be read from a CSV or JSON file directly using other utility methods.
+        </p>
+        <pre><code>
+var data = [
+  {"AWD":"1","City MPG":"17","Cyl":"6","Dealer Cost":"33337"},
+  {"AWD":"0","City MPG":"18","Cyl":"6","Dealer Cost":"39014"},
+  {"AWD":"0","City MPG":"18","Cyl":"6","Dealer Cost":"41100"}
+];
+</code>
+</pre>
+        <h2>Interaction Weight Vectors</h2>
+        <p>
+        IAL's core is based on the interaction weight concept. User interest is modeled and approxmited in IAL, using two weight vectors.
+        <ol>
+          <li>An attribute weight vector</li>
+          <li>An item weight vector</li>
+        </ol>
+        Combining the two vectors, IAL generates an item score that signifies how important a data point is. On initialization, IAL generates default attribute weight and item weights as identity vectors, and also generates the corresponding item scores. These values are bound to the data directly in the DOM as an ial object.
+        </p>
+        <pre><code>ial: {
+  "id": 0,
+  "itemScore": 4.1389,
+  "weight": 1
+}</code></pre>
+
+        <h2>Modifying Weight Vectors</h2>
+
+        <p>
+        The power to update and modify weight vectors based on interactions is given completely to the developer. We realize that each Visual Analytic toolkit has different goals, and the behavior of the weight vectors must be set according. For fine grained control of the weight vectors, we provide the following <i>getter</i> and <i>setter</i> methods.
+        </p>
+
+        <ul>
+        <li>
+          <p>
+            <h4>Attribute Weights, based on Similarity</h4>
+            <p>Finding similar or dissimilar points is a very commonly required task in visual analytics. IAL provides easy access to updating attributes, based on how similar or dissimilar points.</p>
+          <pre><code>ial.generateAttributeWeightVectorUsingSimilarity(<i>[points]</i>);</code></pre>
+          <p>This method allows developers to modify the attribute weight vector directly, based on the similarity of a set of points. The method does not return any values, as it directly modifies the attribure weight vector. By default, the method operates on all points in the data set. This behavior can be modified by optionally passing an array of data objects that you want the method to work on.</p>
+
+          <p>The other side of the same coin, is generating attribute weights based on how dissimilar a set of points are. IAL allows you to pass an array of points, and can generate the attribute weight vector based on the variance of each attribute.
+          </p>
+          <pre><code>ial.generateAttributeWeightVectorUsingDifferences([points]);</code></pre>
+          <p>IAL can also generate dissimilarity scores between two user-defined clusters of points. To do so, an additional array of points can be passed, and IAL can determine the attribute weight vector based on the difference between <i>set 1</i> and <i>set 2</i>.
+          </p>
+          <pre><code>ial.generateAttributeWeightVectorUsingDifferences([set1],
+                                                  [set2]);</code></pre>
+          <p>The dissimilarity between the two sets is once again determined the variance of each attribute of the data points.
+        </li>
+        <li>
+          <p>
+            <h4>Accessing Item Weights</h4>
+            <p>Item weights can be directly accessed and added to any event handler. We provide the following methods to do so.
+            </p>
+            <pre><code>ial.getItemWeight(ial.id);
+ial.setItemWeight(ial.id, newWeight);
+ial.incrementItemWeight(ial.id, <i>incrementBy</i>);
+</code></pre>
+            <p>To access the item weights, these methods require the item identifier. This identifier is attached to each data item on initialization.</p>
+          </p>
+        </li>
+        <li>
+          <p>
+            <h4>Accessing Attribute Weights</h4>
+            <p>Similarly, attribute weights can be directly accessed and added to any event handler. We provide the following methods to do so.
+            </p>
+            <pre><code>ial.getAttributeWeight(attributeName);
+ial.setAttributeWeight(attributeName, newWeight);
+ial.incrementAttributeWeight(attributeName, <i>incrementBy</i>);
+</code></pre>
+            <p>To access the attribute weights, these methods require the attribute identifier. This identifier is defined by the dataset used; key names from the data's JSON object are used to uniquely identify each attribute.</p>
+          </p>
+        </li>
+        </ul>
+
+
+        <h2>Helper Analytic Methods</h2>
+        <p>In addition to accessor methods for modifying the weight vectors, IAL also provides a number of helper analytic methods for the developer.
+        </p>
+        <table>
+        <tbody>
+          <tr>
+            <th>Category</th>
+            <th>Method</th>
+          </tr>
+          <tr>
+            <td rowspan="3">Sorting</td>
+            <td><code>ial.getTopNItemsByInteractionWeights(N)</code></td>
+          </tr>
+          <tr>
+            <td><code>ial.getTopNItemsByScores(N)</code></td>
+          </tr>
+          <tr>
+            <td><code>ial.getNSimilarItems(dataItem, N)</code></td>
+          </tr>
+          <tr>
+            <td rowspan="3">Logging</td>
+            <td><code>ial.getSessionLogs(startTime, endTime)</code></td>
+          </tr>
+          <tr>
+            <td><code>ial.getDataItemLogs([ids])</code></td>
+          </tr>
+          <tr>
+            <td><code>ial.getAttributeLogs([attributes])</code></td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td><code>ial.createClusters([data],k)</code></td>
+          </tr>
+        </tbody>
+        </table>
+        <p>The function descriptions are provided below.</p>
+        <pre><code>
+<span class="comments">/*
+ * Input: An integer N, which is expected to be greater than 0.
+ * Returns an array of N data items, sorted by their respective
+ * item weights.
+ *
+ */
+</span> ial.getTopNItemsByInteractionWeights(N);
+<span class="comments">
+<hr class="commentsSeparator"/>
+/*
+ * Input: An integer N, which is expected to be greater than 0.
+ * Returns an array of N data items, sorted by their respective
+ * item scores.
+ *
+ * The item scores are generated by computing the product of the
+ * attribute weight vector and the item weight vector's transpose.
+ * Item Score = Weight Vector * Item Weight * [Identity Vector]<sup>T</sup>
+ * Item scores are precached for each data point, and the method
+ * returns the top N data points based on this score.
+ *
+ */
+</span> ial.getTopNItemsByScores(N);
+<span class="comments">
+<hr class="commentsSeparator"/>
+/*
+ * Input: A data item which acts as the pivot for similarity
+ * computation, and an integer N that is greater than zero. The
+ * method returns an array of N data items, sorted by their
+ * respective similarity scores.
+ *
+ */
+</span> ial.getNSimilarItems(dataItem, N);
+<span class="comments">
+<hr class="commentsSeparator"/>
+/*
+ * Input: The start and end times in epoch milliseconds. End time is
+ * expected to be greater than start time. The method returns all
+ * available logs for all data items, if they fall in the specified
+ * time block. Each log object in the list is a dictionary with the
+ * following keys.
+ *
+ * {
+ *    dataItem; (The data object that was interacted with)
+ *    eventName; (The event or interaction that was performed)
+ *    oldWeight; (Data item weight before the interaction)
+ *    newWeight; (Data item weight after the interaction)
+ *    customLogInfo; (KV pairs pairs for app-specific needs)
+ *    eventSpecificInfo; (KV pairs pairs for event-specific needs)
+ * }
+ *
+ */
+</span> ial.getSessionLogs(startTime, endTime)
+<span class="comments">
+<hr class="commentsSeparator"/>
+/*
+ * Input: An array of data item identifiers. The method returns
+ * all available logs for the given set of data items. Each log
+ * object in the list is a dictionary with the following keys.
+ *
+ * {
+ *    dataItem; (The data object that was interacted with)
+ *    eventName; (The event or interaction that was performed)
+ *    oldWeight; (Data item weight before the interaction)
+ *    newWeight; (Data item weight after the interaction)
+ *    customLogInfo; (KV pairs pairs for app-specific needs)
+ *    eventSpecificInfo; (KV pairs pairs for event-specific needs)
+ * }
+ *
+ */
+</span> ial.getDataItemLogs([ids])
+<span class="comments">
+<hr class="commentsSeparator"/>
+/*
+ * Input: An array of attribute identifiers. The method returns
+ * all available logs for the given set of attributes. Each log
+ * object in the list is a dictionary with the following keys.
+ *
+ * {
+ *    dataItem; (The data object that was interacted with)
+ *    eventName; (The event or interaction that was performed)
+ *    oldWeight; (Data item weight before the interaction)
+ *    newWeight; (Data item weight after the interaction)
+ *    customLogInfo; (KV pairs pairs for app-specific needs)
+ *    eventSpecificInfo; (KV pairs pairs for event-specific needs)
+ * }
+ *
+ */
+</span> ial.getAttributeLogs([attributes])
+<span class="comments">
+<hr class="commentsSeparator"/>
+/*
+ * Input: An optional array of the data objects to be clustered.
+ * This defaults to the entire dataset if the optional array is
+ * not provided. Additionally, the method also takes the cluster
+ * threshold as a parameter. Ideal values for the threshold are
+ * in the range of [0.01, 1]. The function returns an array of
+ * cluster objects. Each cluster object is of a dictionary with
+ * the following keys.
+ *
+ * {
+ *    clusterId; (An integer to uniquely identify each cluster)
+ *    clusterLabel; (A string, to provide a human readable name)
+ *    dataItems = []; (An array of data items in the cluster)
+ * }
+ *
+ */
+</span> ial.createClusters([data], k)
+</code></pre>
+
+      </section>
+      <footer>
+        <p>This project is maintained by<br/><a href="http://vis.gatech.edu">The Visual Analytics Lab at Georgia Tech</a></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
