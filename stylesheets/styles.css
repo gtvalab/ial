@@ -306,6 +306,11 @@ footer {
     background-color: #39c;
 }
 
+object {
+  min-width: 100%;
+  overflow: hidden;
+}
+
 .menu li a:hover:not(.active) {
     background-color: #555;
     color: white;
