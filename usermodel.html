@@ -45,9 +45,9 @@
         <div class="menu">
           <ul>
             <li><a  href="./index.html">Overview</a></li>
-            <li><a class="active" href="./initial.html">Initialization</a></li>
+            <li><a  href="./initial.html">Initialization</a></li>
             <li><a href="./log.html">Logging</a></li>
-            <li><a href="./usermodel.html">User Model</a></li>
+            <li><a class="active" href="./usermodel.html">User Model</a></li>
             <li><a href="./analytics.html">Analytics</a></li>
           </ul>
         </div>
@@ -55,38 +55,9 @@
       </header>
 
       <section>
-        <h2>The Basics</h2>
+        <h2>User Model is under construction</h2>
 
-        <p>To use IAL in your application, you'll need to include the script in your code. Copy the snippet below, or download a copy from our repository.</p>
 
-<pre><code><span><<span>script src="https://raw.githubusercontent.com/gtvalab/Interactive-Analytics-Library/master/src/ial.js" charset="utf-8"></span><<span>script</span>></span></code>
-</pre>
-
-        <p>You might ask, <i>Why would I use IAL?</i> It's important to understand what IAL is and what it isn't. IAL is not a monolithic library that tries to visualize data, or replace analytical libraries. Mike Bostock's D3.js is a very powerful resource for binding data to visual elements on the DOM, and IAL is not meant to replace that. Instead, we build on top of that idea and extend it to interactions. IAL primarily provides the following.
-          <ol>
-            <li>Binding user interest to the visual elements of the webpage's DOM</li>
-            <li>Helper analytic methods that work directly on user interest</li>
-            <li>Easy logging capabilities to save the state of an interaction for later use</li>
-            <li>A very familiar syntax that works with common libraries like D3.js and jQuery</li>
-          </ol>
-          IAL's syntax allows developers to combine multiple data driven methods, and add interaction analytics wherever required.
-        </p>
-        <h2>Initializing IAL</h2>
-        <p>
-        Initializing IAL is a simple one-step constructor call.
-        </p>
-        <pre><code>ial.init(data);</code></pre>
-        <p>
-        Data can provided to IAL in many ways. It can be as simple as passing a JSON object, or can be read from a CSV or JSON file directly using other utility methods.
-        </p>
-        <pre><code>
-var data = [
-  {"AWD":"1","City MPG":"17","Cyl":"6","Dealer Cost":"33337"},
-  {"AWD":"0","City MPG":"18","Cyl":"6","Dealer Cost":"39014"},
-  {"AWD":"0","City MPG":"18","Cyl":"6","Dealer Cost":"41100"}
-];
-</code>
-</pre>
 
 <!--
         <h2>Interaction Weight Vectors</h2>
