@@ -306,8 +306,9 @@ footer {
     background-color: #39c;
 }
 
-object {
-  min-width: 100%;
+iframe {
+  width: 100%;
+  height:260px;
   overflow: hidden;
 }
 
