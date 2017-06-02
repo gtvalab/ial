@@ -82,68 +82,68 @@
       </br>
       </br>
 
-  <h3>Item Weight</h3>
+  <h3 style="margin-bottom:2px;">Item Weight</h3>
   <p>Item weights can be directly accessed and added to any event handler. We provide the following methods to do so. To access the item weights, these methods require the item identifier. This identifier is attached to each data item on initialization.</p>
         <p>
-        <h4>Get Item Score </h4>
+        <h4 style="margin-bottom:2px;">Get Item Score </h4>
         <pre><code>%parameters: data point object and current attribute weight vector
 
 ial.usermodel.getItemScore(ial.id, attributeVector);   </code></pre>
 
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 
 <hr>
 
-<h4>Increment Item Weight </h4>
+<h4 style="margin-bottom:2px;">Increment Item Weight </h4>
 <pre><code>%parameters: data point object, new weightiting,
         status of log event, and information of additional log
 
 ial.usermodel.incrementItemWeight(ial.id, <i>incrementBy</i>);   </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 
 <hr>
 
-<h4>Set Item Weight </h4>
+<h4 style="margin-bottom:2px;">Set Item Weight </h4>
 <pre><code>%parameters: data point object, new weightiting,
         status of log event, and information of additional log
 
 ial.usermodel.setItemWeight (d, newWeight, logEvent, additionalLogInfoMap)   </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
-<h4>Update Item Scores</h4>
+<h4 style="margin-bottom:2px;">Update Item Scores</h4>
 <p>Updates item scores for all data points.</p>
 <pre><code>ial.usermodel.updateItemScores () </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
@@ -156,59 +156,59 @@ ial.usermodel.setItemWeight (d, newWeight, logEvent, additionalLogInfoMap)   </c
 
 
 
-<h3>Attribute Weight</h3>
+<h3 style="margin-bottom:2px;">Attribute Weight</h3>
 <p>Similarly, attribute weights can be directly accessed and added to any event handler. We provide the following methods to do so. To access the attribute weights, these methods require the attribute identifier. This identifier is defined by the dataset used; key names from the data's JSON object are used to uniquely identify each attribute. </p>
 
-<h4>Get Attribute Weight </h4>
+<h4 style="margin-bottom:2px;">Get Attribute Weight </h4>
 <pre><code>%parameters: attribute
 
 ial.usermodel.getAttributeWeight (attribute) </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 
 <hr>
 
-<h4>Increment Attribute Weight </h4>
+<h4 style="margin-bottom:2px;">Increment Attribute Weight </h4>
 <pre><code>%parameters: attribute, new weightiting,
         status of log event, and information of additional log
 
 ial.usermodel.incrementAttributeWeight (attribute, increment, logEvent, additionalLogInfoMap)</code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
 
-<h4>Set Attribute Weight </h4>
+<h4 style="margin-bottom:2px;">Set Attribute Weight </h4>
 <pre><code>%parameters: attribute, new weightiting,
         status of log event, and information of additional log
 
 ial.usermodel.setAttributeWeight (attribute, newWeight, logEvent, additionalLogInfoMap)  </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
-<h4>Get Top n Points by Interaction Weights </h4>
+<h4 style="margin-bottom:2px;">Get Top n Points by Interaction Weights </h4>
 <p>Returns top n points based on interaction weight.</p>
 <pre><code>%parameters: number of point, status of log event,
                         and information of additional log
@@ -216,16 +216,16 @@ ial.usermodel.setAttributeWeight (attribute, newWeight, logEvent, additionalLogI
 ial.usermodel.getTopNPointsByInteractionWeights (N, logEvent, additionalLogInfoMap) </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
-<h4>Get Top n Points by Scores </h4>
+<h4 style="margin-bottom:2px;">Get Top n Points by Scores </h4>
 <p>Returns top n points based on attributes and attribute weights.</p>
 <pre><code>%parameters: number of point, status of log event,
                         and information of additional log
@@ -233,16 +233,16 @@ ial.usermodel.getTopNPointsByInteractionWeights (N, logEvent, additionalLogInfoM
 ial.usermodel.getTopNPointsByScores (N, logEvent, additionalLogInfoMap) </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
-<h4>Get n Similar Points </h4>
+<h4 style="margin-bottom:2px;">Get n Similar Points </h4>
 <p>Returns an array of the n most similar points to the given data point.</p>
 <pre><code>%parameters: given data point, number of expected similar data points, status of log event,
                         and information of additional log
@@ -250,16 +250,16 @@ ial.usermodel.getTopNPointsByScores (N, logEvent, additionalLogInfoMap) </code><
 ial.usermodel.getNSimilarPoints (dataPoint, n, logEvent, additionalLogInfoMap) </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
-<h4>Generate Attribute Weight Vector using Similarity </h4>
+<h4 style="margin-bottom:2px;">Generate Attribute Weight Vector using Similarity </h4>
 <p>Finding similar or dissimilar points is a very commonly required task in visual analytics. IAL provides easy access to updating attributes, based on how similar or dissimilar points. This method allows developers to modify the attribute weight vector directly, based on the similarity of a set of points. The method does not return any values, as it directly modifies the attribure weight vector. By default, the method operates on all points in the data set. This behavior can be modified by optionally passing an array of data objects that you want the method to work on.
 
 </p>
@@ -267,26 +267,26 @@ ial.usermodel.getNSimilarPoints (dataPoint, n, logEvent, additionalLogInfoMap) <
 ial.usermodel.generateAttributeWeightVectorUsingSimilarity([points]); </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
 <hr>
 
-<h4>Generate Attribute Weight Vector using Differences </h4>
+<h4 style="margin-bottom:2px;">Generate Attribute Weight Vector using Differences </h4>
 <p>The other side of the same coin, is generating attribute weights based on how dissimilar a set of points are. IAL allows you to pass an array of points, and can generate the attribute weight vector based on the variance of each attribute.
 </p>
 <pre><code>
 ial.usermodel.generateAttributeWeightVectorUsingDifferences([points]); </code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
@@ -294,10 +294,10 @@ ial.usermodel.generateAttributeWeightVectorUsingDifferences([points]); </code></
 <pre><code>ial.usermodel.generateAttributeWeightVectorUsingDifferences([set1],[set2]);</code></pre>
 <div style=" width:100%;padding:0px;">
   <div style="width:65%; float:left; padding-right:1px;">
-  <pre><code> exmaple </code></pre>
+  <pre><code>exmaple </code></pre>
   </div>
   <div style="width:34.8%; float:left;">
-  <pre><code> output  </code></pre>
+  <pre><code>output  </code></pre>
   </div>
 </div>
 
