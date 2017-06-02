@@ -54,12 +54,8 @@
 
       </header>
 
+
       <section>
-        <h2>User Model is under construction</h2>
-
-
-
-<!--
         <h2>Interaction Weight Vectors</h2>
         <p>
         IAL's core is based on the interaction weight concept. User interest is modeled and approxmited in IAL, using two weight vectors.
@@ -70,210 +66,161 @@
         Combining the two vectors, IAL generates an item score that signifies how important a data point is. On initialization, IAL generates default attribute weight and item weights as identity vectors, and also generates the corresponding item scores. These values are bound to the data directly in the DOM as an ial object.
         </p>
         <pre><code>ial: {
-  "id": 0,
-  "itemScore": 4.1389,
-  "weight": 1
-}</code></pre>
+      "id": 0,
+      "itemScore": 4.1389,
+      "weight": 1
+      }</code></pre>
 
         <h2>Modifying Weight Vectors</h2>
 
         <p>
         The power to update and modify weight vectors based on interactions is given completely to the developer. We realize that each Visual Analytic toolkit has different goals, and the behavior of the weight vectors must be set according. For fine grained control of the weight vectors, we provide the following <i>getter</i> and <i>setter</i> methods.
         </p>
+      </br>
+      </br>
+      </br>
+      </br>
+      </br>
 
-        <ul>
-        <li>
-          <p>
-            <h4>Attribute Weights, based on Similarity</h4>
-            <p>Finding similar or dissimilar points is a very commonly required task in visual analytics. IAL provides easy access to updating attributes, based on how similar or dissimilar points.</p>
-          <pre><code>ial.generateAttributeWeightVectorUsingSimilarity(<i>[points]</i>);</code></pre>
-          <p>This method allows developers to modify the attribute weight vector directly, based on the similarity of a set of points. The method does not return any values, as it directly modifies the attribure weight vector. By default, the method operates on all points in the data set. This behavior can be modified by optionally passing an array of data objects that you want the method to work on.</p>
+  <h3>Item Weight</h3>
+  <p>Item weights can be directly accessed and added to any event handler. We provide the following methods to do so. To access the item weights, these methods require the item identifier. This identifier is attached to each data item on initialization.</p>
+        <p>
+        <h4>Get Item Score </h4>
+        <pre><code>%parameters: data point object and current attribute weight vector
 
-          <p>The other side of the same coin, is generating attribute weights based on how dissimilar a set of points are. IAL allows you to pass an array of points, and can generate the attribute weight vector based on the variance of each attribute.
-          </p>
-          <pre><code>ial.generateAttributeWeightVectorUsingDifferences([points]);</code></pre>
-          <p>IAL can also generate dissimilarity scores between two user-defined clusters of points. To do so, an additional array of points can be passed, and IAL can determine the attribute weight vector based on the difference between <i>set 1</i> and <i>set 2</i>.
-          </p>
-          <pre><code>ial.generateAttributeWeightVectorUsingDifferences([set1],
-                                                  [set2]);</code></pre>
-          <p>The dissimilarity between the two sets is once again determined the variance of each attribute of the data points.
-        </li>
-        <li>
-          <p>
-            <h4>Accessing Item Weights</h4>
-            <p>Item weights can be directly accessed and added to any event handler. We provide the following methods to do so.
-            </p>
-            <pre><code>ial.getItemWeight(ial.id);
-ial.setItemWeight(ial.id, newWeight);
-ial.incrementItemWeight(ial.id, <i>incrementBy</i>);
-</code></pre>
-            <p>To access the item weights, these methods require the item identifier. This identifier is attached to each data item on initialization.</p>
-          </p>
-        </li>
-        <li>
-          <p>
-            <h4>Accessing Attribute Weights</h4>
-            <p>Similarly, attribute weights can be directly accessed and added to any event handler. We provide the following methods to do so.
-            </p>
-            <pre><code>ial.getAttributeWeight(attributeName);
-ial.setAttributeWeight(attributeName, newWeight);
-ial.incrementAttributeWeight(attributeName, <i>incrementBy</i>);
-</code></pre>
-            <p>To access the attribute weights, these methods require the attribute identifier. This identifier is defined by the dataset used; key names from the data's JSON object are used to uniquely identify each attribute.</p>
-          </p>
-        </li>
-        </ul>
+ial.usermodel.getItemScore(ial.id, attributeVector);   </code></pre>
+
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Increment Item Weight </h4>
+<pre><code>%parameters: data point object, new weightiting,
+        status of log event, and information of additional log
+
+ial.usermodel.incrementItemWeight(ial.id, <i>incrementBy</i>);   </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
 
 
-        <h2>Helper Analytic Methods</h2>
-        <p>In addition to accessor methods for modifying the weight vectors, IAL also provides a number of helper analytic methods for the developer.
-        </p>
-        <table>
-        <tbody>
-          <tr>
-            <th>Category</th>
-            <th>Method</th>
-          </tr>
-          <tr>
-            <td rowspan="3">Sorting</td>
-            <td><code>ial.getTopNItemsByInteractionWeights(N)</code></td>
-          </tr>
-          <tr>
-            <td><code>ial.getTopNItemsByScores(N)</code></td>
-          </tr>
-          <tr>
-            <td><code>ial.getNSimilarItems(dataItem, N)</code></td>
-          </tr>
-          <tr>
-            <td rowspan="3">Logging</td>
-            <td><code>ial.getSessionLogs(startTime, endTime)</code></td>
-          </tr>
-          <tr>
-            <td><code>ial.getDataItemLogs([ids])</code></td>
-          </tr>
-          <tr>
-            <td><code>ial.getAttributeLogs([attributes])</code></td>
-          </tr>
-          <tr>
-            <td>Analytics</td>
-            <td><code>ial.createClusters([data],k)</code></td>
-          </tr>
-        </tbody>
-        </table>
-        <p>The function descriptions are provided below.</p>
-        <pre><code>
-<span class="comments">/*
- * Input: An integer N, which is expected to be greater than 0.
- * Returns an array of N data items, sorted by their respective
- * item weights.
- *
- */
-</span> ial.getTopNItemsByInteractionWeights(N);
-<span class="comments">
-<hr class="commentsSeparator"/>
-/*
- * Input: An integer N, which is expected to be greater than 0.
- * Returns an array of N data items, sorted by their respective
- * item scores.
- *
- * The item scores are generated by computing the product of the
- * attribute weight vector and the item weight vector's transpose.
- * Item Score = Weight Vector * Item Weight * [Identity Vector]<sup>T</sup>
- * Item scores are precached for each data point, and the method
- * returns the top N data points based on this score.
- *
- */
-</span> ial.getTopNItemsByScores(N);
-<span class="comments">
-<hr class="commentsSeparator"/>
-/*
- * Input: A data item which acts as the pivot for similarity
- * computation, and an integer N that is greater than zero. The
- * method returns an array of N data items, sorted by their
- * respective similarity scores.
- *
- */
-</span> ial.getNSimilarItems(dataItem, N);
-<span class="comments">
-<hr class="commentsSeparator"/>
-/*
- * Input: The start and end times in epoch milliseconds. End time is
- * expected to be greater than start time. The method returns all
- * available logs for all data items, if they fall in the specified
- * time block. Each log object in the list is a dictionary with the
- * following keys.
- *
- * {
- *    dataItem; (The data object that was interacted with)
- *    eventName; (The event or interaction that was performed)
- *    oldWeight; (Data item weight before the interaction)
- *    newWeight; (Data item weight after the interaction)
- *    customLogInfo; (KV pairs pairs for app-specific needs)
- *    eventSpecificInfo; (KV pairs pairs for event-specific needs)
- * }
- *
- */
-</span> ial.getSessionLogs(startTime, endTime)
-<span class="comments">
-<hr class="commentsSeparator"/>
-/*
- * Input: An array of data item identifiers. The method returns
- * all available logs for the given set of data items. Each log
- * object in the list is a dictionary with the following keys.
- *
- * {
- *    dataItem; (The data object that was interacted with)
- *    eventName; (The event or interaction that was performed)
- *    oldWeight; (Data item weight before the interaction)
- *    newWeight; (Data item weight after the interaction)
- *    customLogInfo; (KV pairs pairs for app-specific needs)
- *    eventSpecificInfo; (KV pairs pairs for event-specific needs)
- * }
- *
- */
-</span> ial.getDataItemLogs([ids])
-<span class="comments">
-<hr class="commentsSeparator"/>
-/*
- * Input: An array of attribute identifiers. The method returns
- * all available logs for the given set of attributes. Each log
- * object in the list is a dictionary with the following keys.
- *
- * {
- *    dataItem; (The data object that was interacted with)
- *    eventName; (The event or interaction that was performed)
- *    oldWeight; (Data item weight before the interaction)
- *    newWeight; (Data item weight after the interaction)
- *    customLogInfo; (KV pairs pairs for app-specific needs)
- *    eventSpecificInfo; (KV pairs pairs for event-specific needs)
- * }
- *
- */
-</span> ial.getAttributeLogs([attributes])
-<span class="comments">
-<hr class="commentsSeparator"/>
-/*
- * Input: An optional array of the data objects to be clustered.
- * This defaults to the entire dataset if the optional array is
- * not provided. Additionally, the method also takes the cluster
- * threshold as a parameter. Ideal values for the threshold are
- * in the range of [0.01, 1]. The function returns an array of
- * cluster objects. Each cluster object is of a dictionary with
- * the following keys.
- *
- * {
- *    clusterId; (An integer to uniquely identify each cluster)
- *    clusterLabel; (A string, to provide a human readable name)
- *    dataItems = []; (An array of data items in the cluster)
- * }
- *
- */
-</span> ial.createClusters([data], k)
-</code></pre>
+<hr>
 
-<h1>Acknowledgements</h1>
-This project is funded in part by Georgia Tech School of Interactive Computing, and the Pacific Northwest National Laboratory Analysis in Motion Initiative.
--->
+<h4>Set Item Weight </h4>
+<pre><code>%parameters: data point object, new weightiting,
+        status of log event, and information of additional log
+
+ial.usermodel.setItemWeight (d, newWeight, logEvent, additionalLogInfoMap)   </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Update Item Scores</h4>
+<p>Updates item scores for all data points.</p>
+<pre><code>ial.usermodel.updateItemScores () </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+
+<h3>Attribute Weight</h3>
+<p>Similarly, attribute weights can be directly accessed and added to any event handler. We provide the following methods to do so. To access the attribute weights, these methods require the attribute identifier. This identifier is defined by the dataset used; key names from the data's JSON object are used to uniquely identify each attribute. </p>
+
+<h4>Get Attribute Weight </h4>
+<pre><code>%parameters: attribute
+
+ial.usermodel.getAttributeWeight (attribute) </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Increment Attribute Weight </h4>
+<pre><code>%parameters: attribute, new weightiting,
+        status of log event, and information of additional log
+
+ial.usermodel.incrementAttributeWeight (attribute, increment, logEvent, additionalLogInfoMap)</code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+
+<h4>Set Attribute Weight </h4>
+<pre><code>%parameters: attribute, new weightiting,
+        status of log event, and information of additional log
+
+ial.usermodel.setAttributeWeight (attribute, newWeight, logEvent, additionalLogInfoMap)  </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Get Top n Points by Interaction Weights </h4>
+<p>Returns top n points based on interaction weight.</p>
+<pre><code>%parameters: number of point, status of log event,
+                        and information of additional log
+
+ial.usermodel.getTopNPointsByInteractionWeights (N, logEvent, additionalLogInfoMap) </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Get Top n Points by Scores </h4>
+<p>Returns top n points based on attributes and attribute weights.</p>
+<pre><code>%parameters: number of point, status of log event,
+                        and information of additional log
+
+ial.usermodel.getTopNPointsByScores (N, logEvent, additionalLogInfoMap) </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Get n Similar Points </h4>
+<p>Returns an array of the n most similar points to the given data point.</p>
+<pre><code>%parameters: given data point, number of expected similar data points, status of log event,
+                        and information of additional log
+
+ial.usermodel.getNSimilarPoints (dataPoint, n, logEvent, additionalLogInfoMap) </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Generate Attribute Weight Vector using Similarity </h4>
+<p>Finding similar or dissimilar points is a very commonly required task in visual analytics. IAL provides easy access to updating attributes, based on how similar or dissimilar points. This method allows developers to modify the attribute weight vector directly, based on the similarity of a set of points. The method does not return any values, as it directly modifies the attribure weight vector. By default, the method operates on all points in the data set. This behavior can be modified by optionally passing an array of data objects that you want the method to work on.
+
+</p>
+<pre><code>
+ial.usermodel.generateAttributeWeightVectorUsingSimilarity([points]); </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<hr>
+
+<h4>Generate Attribute Weight Vector using Differences </h4>
+<p>The other side of the same coin, is generating attribute weights based on how dissimilar a set of points are. IAL allows you to pass an array of points, and can generate the attribute weight vector based on the variance of each attribute.
+</p>
+<pre><code>
+ial.usermodel.generateAttributeWeightVectorUsingDifferences([points]); </code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
+<p>IAL can also generate dissimilarity scores between two user-defined clusters of points. To do so, an additional array of points can be passed, and IAL can determine the attribute weight vector based on the difference between set 1 and set 2.</p>
+<pre><code>ial.usermodel.generateAttributeWeightVectorUsingDifferences([set1],[set2]);</code></pre>
+<p><i>Example:</i></p>
+<pre><code> code will go here  </code></pre>
+
       </section>
       <footer>
         <p>This project is maintained by<br/><a href="http://vis.gatech.edu">The Visual Analytics Lab at Georgia Tech</a></p>
